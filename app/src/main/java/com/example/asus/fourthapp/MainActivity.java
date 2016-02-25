@@ -22,16 +22,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView7;
     Button buttonRes;
     EditText editText1;
-    // EditText EditText2;
-   // EditText EditOperText;
+  //  EditText EditText2;
+  //  EditText EditOperText;
     Switch themeSwitch;
     static int curentTheme;
+  //  boolean isOper;
+  //  String operNotNumbe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
      Intent intent = getIntent();
-        curentTheme = intent.getIntExtra("theme", 1);
+        curentTheme = intent.getIntExtra("theme", 2);
         switch(curentTheme){
             case 1:
                 setTheme(R.style.MyBlackTheme);
@@ -43,9 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-//        Button button_1 = (Button) findViewById(R.id.button_1);
-//        button_1.setText(" ");
-//        button_1.setEnabled(false);
 
         //проверка и выбор операции
         editText1 = (EditText) findViewById(R.id.Edit1_1);
@@ -66,28 +65,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
 
-
+            //вызываем первый TextView
             case R.id.textView_5:
                 Intent intent = new Intent(this, Main2Activity.class);
                 startActivityForResult(intent, 1);
-
-                //вызываем первый TextView
                 break;
+            //вызываем второй TextView
             case R.id.textView_6:
                 intent = new Intent(this, Main2Activity.class);
                 startActivityForResult(intent, 2);
-                //вызываем первый TextView
                 break;
             case R.id.button_res:
                 String oper = editText1.getText().toString();
                 String num1Str = textView5.getText().toString();
                 String num2Str = textView6.getText().toString();
                 float res = 0;
-
+            // проверка на наличие аргументов, оператора и отображение тоста
                 if (TextUtils.isEmpty(num1Str) || TextUtils.isEmpty(num2Str)) {
-                    Toast.makeText(this, "Введите 2 аргумента", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Enter 2 number", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(editText1.getText().toString())) {
-                    Toast.makeText(this, "Введите оператор", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Enter operator Введите оператор", Toast.LENGTH_SHORT).show();
                 } else {
                     float num1 = Float.parseFloat(num1Str);
                     float num2 = Float.parseFloat(num2Str);
@@ -106,8 +103,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             res = num1 / num2;
                             break;
                     }
-                    textView7.setText(String.valueOf(res));
 
+                     if (isOper(oper)) {
+                        Toast.makeText(this, "Result", Toast.LENGTH_SHORT).show();
+                    }
+                     else {
+                        Toast.makeText(this, "Change operator" + "Only *, /, +, -", Toast.LENGTH_SHORT).show();
+                    }
+                    textView7.setText(String.valueOf(res));
                 }
 
                     default:
@@ -117,9 +120,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean isOper(String s) {
         if(s.equals("+") || s.equals("-") ||s.equals("*") ||s.equals("/")){
+
             return true;
-        }
-        return false;
+
+        } else return false;
     }
 
     @Override
