@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#f5f7fa</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorGrayFon">#a9a1a4</color>
-    <color name="colorGrayOper">#e4e3e3</color>
+    <color name="colorGrayFon">#d9d5d6</color>
+    <color name="colorGrayOperator">#e7dede</color>
 </resources>
 

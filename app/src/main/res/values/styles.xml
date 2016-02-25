@@ -25,4 +25,36 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="Edit_1stStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+
+
+    </style>
+
+    <style name="Edit_2ndStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextOperatorStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ResultStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="MySwitchStyle">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+
+
 </resources>

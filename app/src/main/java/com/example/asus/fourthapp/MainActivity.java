@@ -22,29 +22,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView7;
     Button buttonRes;
     EditText editText1;
-  //  EditText EditText2;
-  //  EditText EditOperText;
     Switch themeSwitch;
     static int curentTheme;
-  //  boolean isOper;
-  //  String operNotNumbe;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
      Intent intent = getIntent();
-        curentTheme = intent.getIntExtra("theme", 2);
+        curentTheme = intent.getIntExtra("theme", 0);
         switch(curentTheme){
             case 1:
                 setTheme(R.style.MyBlackTheme);
                 break;
-            case 0:
+            case 2:
                 setTheme(R.style.MyLightTheme);
                 break;
         }
         setContentView(R.layout.activity_main);
-
-
 
         //проверка и выбор операции
         editText1 = (EditText) findViewById(R.id.Edit1_1);
@@ -59,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         themeSwitch = (Switch)findViewById(R.id.switch1);
         themeSwitch.setOnCheckedChangeListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -84,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (TextUtils.isEmpty(num1Str) || TextUtils.isEmpty(num2Str)) {
                     Toast.makeText(this, "Enter 2 number", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(editText1.getText().toString())) {
-                    Toast.makeText(this, "Enter operator Введите оператор", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Enter operator", Toast.LENGTH_SHORT).show();
                 } else {
                     float num1 = Float.parseFloat(num1Str);
                     float num2 = Float.parseFloat(num2Str);
