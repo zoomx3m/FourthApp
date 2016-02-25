@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case 2:
                     textView6.setText(res);
                     break;
+
             }
         }
     }
