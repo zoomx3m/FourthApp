@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViev_1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="@string/textKey1"-->
+        <!--android:textSize="30sp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViev_2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="@string/textKey2"-->
+        <!--android:textSize="30sp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViev_3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="@string/textKey3"-->
+        <!--android:textSize="30sp" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViev_4"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="5dp"-->
+        <!--android:text="@string/textKey4"-->
+        <!--android:textSize="30sp"/>-->
+
+
+    <RelativeLayout
+        android:id="@+id/Layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+
+        <TextView
+            android:id="@+id/textView_5"
+            android:layout_width="115dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/button_res"
+            android:hint="@string/_1st_num"
+            style="@style/TextResultStyle"
+            android:clickable="true"
+            android:textSize="22sp"
+            android:background="@color/colorGrayFon"/>
+
+
+        <EditText
+            android:id="@+id/Edit1_1"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/button_res"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:hint="@string/_operation"
+            android:textSize="22sp"
+            android:inputType="text"
+            android:maxLength="1"
+            android:background="@color/colorGrayOper"/>
+
+        <TextView
+            android:id="@+id/textView_6"
+            android:layout_width="115dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/button_res"
+            android:layout_alignEnd="@+id/button_res"
+            android:hint="@string/_2nd_num"
+            android:gravity="center"
+            style="@style/TextResultStyle"
+            android:clickable="true"
+            android:textSize="22sp"
+            android:maxLength="3"
+            android:background="@color/colorGrayFon"/>
+
+        <Button
+            android:id="@+id/button_res"
+            android:layout_width="380dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:padding="0dp"
+            android:text="@string/btn_3"
+            android:textSize="25sp"
+            android:background="@color/colorGrayOper"/>
+
+            <!--android:id="@+id/button_res"-->
+            <!--android:layout_width="380dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:paddingTop="0dp"-->
+            <!--android:textSize="26sp"-->
+            <!--android:background="@color/colorGrayOper"-->
+            <!--android:singleLine="true"-->
+            <!--android:hint="@string/btn_2"/>-->
+
+
+
+
+
+        <TextView
+            android:id="@+id/textView_7"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@id/button_res"
+            android:hint="@string/Result1"
+            style="@style/TextResultStyle"
+            android:textSize="22sp"/>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentStart="false"
+            android:backgroundTintMode="multiply"
+            android:clickable="true"
+            android:contextClickable="true" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FourthApp</string>
+    <string name="btn_1">+</string>
+    <string name="textKey1">1. Enter 1st number</string>
+    <string name="textKey2">2. Enter 2nd number</string>
+    <string name="textKey3">3. Choise operation</string>
+    <string name="textKey4">4. Calculation</string>
+    <string name="_1st_num">a</string>
+    <string name="_2nd_num">b</string>
+    <string name="_operation"> </string>
+    <string name="Result1">Result</string>
+    <string name="textKey1_2">1. Enter 1st number</string>
+    <string name="textKey2_2">2. Enter 2nd number</string>
+    <string name="_input_value">input value a(or b)</string>
+    <string name="btn_3">OK</string>
+    <string name="btn_2">Calculate</string>
+
+
+</resources>
