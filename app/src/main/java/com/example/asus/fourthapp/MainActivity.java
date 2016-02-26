@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 /**
  * Created by Asus on 23.02.2016.
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView textView5;
     TextView textView6;
@@ -23,22 +22,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonRes;
     EditText editText1;
     Switch themeSwitch;
-    static int curentTheme;
-
+    private static final int DARK_THEME = 1;
+    private static final int LIGHT_THEME = 2;
+    private static int curentTheme = LIGHT_THEME;
+    private static final String THEME_ID = "theme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-     Intent intent = getIntent();
-        curentTheme = intent.getIntExtra("theme", 0);
-        switch(curentTheme){
-            case 1:
-                setTheme(R.style.MyBlackTheme);
-                break;
-            case 2:
-                setTheme(R.style.MyLightTheme);
-                break;
+
+        Intent intent = getIntent();
+        curentTheme = intent.getIntExtra(THEME_ID, 2);
+        if (curentTheme == DARK_THEME){
+            setTheme(R.style.MyBlackTheme);
+        }else {
+            setTheme(R.style.MyLightTheme);
         }
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //проверка и выбор операции
@@ -51,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView7.setOnClickListener(this);
         buttonRes = (Button) findViewById(R.id.button_res);
         buttonRes.setOnClickListener(this);
-        themeSwitch = (Switch)findViewById(R.id.switch1);
-        themeSwitch.setOnCheckedChangeListener(this);
+        themeSwitch = (Switch) findViewById(R.id.switch1);
+        themeSwitch.setOnClickListener(this);
     }
 
     @Override
@@ -62,19 +61,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //вызываем первый TextView
             case R.id.textView_5:
                 Intent intent = new Intent(this, Main2Activity.class);
+                intent.putExtra(THEME_ID, curentTheme);
                 startActivityForResult(intent, 1);
                 break;
             //вызываем второй TextView
             case R.id.textView_6:
                 intent = new Intent(this, Main2Activity.class);
+                intent.putExtra(THEME_ID, curentTheme);
                 startActivityForResult(intent, 2);
+                break;
+            case R.id.switch1:
+                changeActivity();
                 break;
             case R.id.button_res:
                 String oper = editText1.getText().toString();
                 String num1Str = textView5.getText().toString();
                 String num2Str = textView6.getText().toString();
                 float res = 0;
-            // проверка на наличие аргументов, оператора и отображение тоста
+                // проверка на наличие аргументов, оператора и отображение тоста
                 if (TextUtils.isEmpty(num1Str) || TextUtils.isEmpty(num2Str)) {
                     Toast.makeText(this, "Enter 2 number", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(editText1.getText().toString())) {
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     float num1 = Float.parseFloat(num1Str);
                     float num2 = Float.parseFloat(num2Str);
 
-                    switch(oper){
+                    switch (oper) {
                         case "+":
                             res = num1 + num2;
                             break;
@@ -98,22 +102,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             break;
                     }
 
-                     if (isOper(oper)) {
+                    if (isOper(oper)) {
                         Toast.makeText(this, "Result", Toast.LENGTH_SHORT).show();
-                    }
-                     else {
+                    } else {
                         Toast.makeText(this, "Change operator" + "Only *, /, +, -", Toast.LENGTH_SHORT).show();
                     }
                     textView7.setText(String.valueOf(res));
                 }
 
-                    default:
+            default:
                 break;
         }
     }
 
     private boolean isOper(String s) {
-        if(s.equals("+") || s.equals("-") ||s.equals("*") ||s.equals("/")){
+        if (s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/")) {
 
             return true;
 
@@ -138,20 +141,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    void changeActivity(){
         this.finish();
-
-        if(curentTheme == 0){
+        if (curentTheme == 2) {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("theme", 1);
+            intent.putExtra(THEME_ID, DARK_THEME);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else {
+        } else {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("theme", 0);
+            intent.putExtra(THEME_ID, LIGHT_THEME);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }
+
+
+
 }
+

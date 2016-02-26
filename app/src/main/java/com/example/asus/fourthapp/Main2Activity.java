@@ -23,9 +23,21 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
     Button button2;
     EditText editText1;
     EditText EditText2;
+    private int curTheme;
+    private static final String THEME_ID = "theme";
+    private static final int DARK_THEME = 1;
+    private static final int LIGHT_THEME = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        curTheme = intent.getIntExtra(THEME_ID, 1);
+        if (curTheme == DARK_THEME){
+            setTheme(R.style.MyBlackTheme);
+        }else {
+            setTheme(R.style.MyLightTheme);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
